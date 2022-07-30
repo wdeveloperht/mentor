@@ -110,7 +110,7 @@ if ( !function_exists('html_employees_scoring_list') ) {
             <tr>
               <td><?php echo $index++; ?></td>
               <td><?php echo $memployee['memebers']; ?></td>
-              <td><?php echo $memployee['score']; ?></td>
+              <td><?php echo $memployee['score']; ?> %</td>
             </tr>
             <?php
           }
