@@ -68,7 +68,7 @@ class EmployeesController {
         for ($j = $i + 1;  $j < count($employees); $j++) {
           $score = $this->calculateUsersMatchScore( $employees[$i], $employees[$j] );
           $mentorEmployees[] = [
-            'memebers'  => $employees[$i]['Name'] .' - '. $employees[$j]['Name'],
+            'memebers'  =>  '<b>' . $employees[$i]['Name'] . '</b> will be matched with <b>' . $employees[$j]['Name'] .'</b>',
             'score'     => $score
           ];
         }
