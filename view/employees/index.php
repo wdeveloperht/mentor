@@ -6,7 +6,8 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-      <div class="col-lg-5">
+      <?php if ( empty($pageData['currentFileName']) ) { ?>
+        <div class="col-lg-5">
         <br>
         <form action="index.php?controller=employees&action=upload" method="post" enctype="multipart/form-data">
           <div class="form-group">
@@ -17,26 +18,33 @@
         </form>
         <hr>
         <h3>CSV List</h3>
-        <?php html_csv_list( [ 'files' => $pageData['files'] ] ); ?>
+        <?php echo $pageData['html_csv_list']; ?>
       </div>
-      <div class="col-lg-7">
-        <?php if ( !empty($pageData['currentFileName']) && !empty($pageData['employees']) && !empty($pageData['mentorEmployees']) ) { ?>
-          <div class="row">
-            <h3 class="col-lg-8">Loaded employee list from CSV file <b><?php echo $pageData['currentFileName']; ?></b>!</h3>
-            <a href="/" class="col-lg-3 text-right" style="margin-top: 20px;">Back to CSV list</a>
+      <?php } ?>
+      <?php if ( !empty($pageData['currentFileName']) && !empty($pageData['html_employees_list']) ) { ?>
+      <div class="col-lg-12">
+          <div class="text-left">
+            <a href="/">Back to CSV list</a>
           </div>
-          <?php html_employees_list( [ 'employees' => $pageData['employees'] ] ); ?>
-          <br>
-          <h3>Employees Scoring Data.</h3>
-          <br>
-          <p>
-          <?php
-            echo sprintf('In the case of %s employees the highest average match score is %s', '<b>' .  count($pageData['employees']) . '</b>', '<b>' . number_format($pageData['mentorAverage'], 2, ',', ' ') . '%</b>');
-          ?>
-          </p>
-          <br>
-          <?php html_employees_scoring_list( [ 'mentorEmployees' => $pageData['mentorEmployees']] ); ?>
-        <?php } ?>
-      </div>
+
+          <div class="col-lg-4">
+              <h4>Loaded employee list from CSV file <b><?php echo $pageData['currentFileName']; ?></b>!</h4>
+              <br>
+              <?php echo $pageData['html_employees_list']; ?>
+          </div>
+
+          <div class="col-lg-4">
+              <h4>Scoring of Employees with each other</h4>
+              <br>
+              <?php echo $pageData['html_employees_scoring_list']; ?>
+          </div>
+
+          <div class="col-lg-4">
+            <h4>All employee groups with the highest average score</h4>
+            <br>
+            <?php echo $pageData['html_employees_max_average_score']; ?>
+          </div>
+        </div>
+      <?php } ?>
     </body>
 </html>
