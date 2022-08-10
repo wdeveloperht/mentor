@@ -166,38 +166,7 @@ class MainHelper {
       }
       ?>
     </table>
-
     <?php
-    /*
-     *
-     *
-        foreach ( $args['result'] as $memebers ) {
-         foreach ( $memebers['memebers'] as $memeberIndex => $memeber ) {
-          ?>
-            <tr>
-              <td><?php echo $memeber; ?></td>
-              <td><?php echo $memebers['score'][$memeberIndex]; ?> %</td>
-            </tr>
-            <?php
-          } ?>
-          <tr>
-            <td colspan="2"><p><?php echo sprintf("In the case of <b>%d</b> employees the highest average match score is <b>%d</b>&#37;", $memebers['countMemebers'], $memebers['avg_score'] );?></p></td>
-          </tr>
-          <?php
-          }
-
-
-          foreach ( $args['result']['memebers'] as $memeberIndex => $memeber ) {
-          ?>
-          <tr>
-            <td><?php echo $memeber; ?></td>
-            <td><?php echo $args['result']['score'][$memeberIndex]; ?> %</td>
-          </tr>
-          <?php
-        }
-
-    <p><?php echo sprintf("In the case of <b>%d</b> employees the highest average match score is <b>%d</b>&#37;", $args['result']['countMemebers'], $args['result']['avg_score'] );?></p>
-     * */
     return ob_get_clean();
   }
 }
